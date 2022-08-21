@@ -1,13 +1,11 @@
 package com.example.employees.employees.web.dto;
 
-import com.example.employees.employees.domain.Employee;
+import com.querydsl.core.annotations.QueryProjection;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
 
 @Getter
-@RequiredArgsConstructor
 public class EmployeeSearchResponseDto {
     private final Long employeeId;
     private final LocalDate birthDate;
@@ -16,14 +14,20 @@ public class EmployeeSearchResponseDto {
     private final String gender;
     private final LocalDate hireDate;
 
-    public static EmployeeSearchResponseDto fromEntity(Employee employee) {
-        return new EmployeeSearchResponseDto(
-                employee.getId(),
-                employee.getBirthDate(),
-                employee.getFirstName(),
-                employee.getLastName(),
-                employee.getGender().toString(),
-                employee.getHireDate()
-        );
+    @QueryProjection
+    public EmployeeSearchResponseDto(
+            Long employeeId,
+            LocalDate birthDate,
+            String firstName,
+            String lastName,
+            String gender,
+            LocalDate hireDate
+    ) {
+        this.employeeId = employeeId;
+        this.birthDate = birthDate;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.hireDate = hireDate;
     }
 }
