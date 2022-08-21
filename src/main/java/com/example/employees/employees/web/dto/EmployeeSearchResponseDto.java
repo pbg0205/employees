@@ -1,14 +1,13 @@
 package com.example.employees.employees.web.dto;
 
 import com.example.employees.employees.domain.Employee;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
 
 @Getter
-@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+@RequiredArgsConstructor
 public class EmployeeSearchResponseDto {
     private final Long employeeId;
     private final LocalDate birthDate;

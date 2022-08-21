@@ -1,7 +1,6 @@
 package com.example.employees.employees.web;
 
 import com.example.employees.employees.application.EmployeeSearchService;
-import com.example.employees.employees.domain.Employee;
 import com.example.employees.employees.domain.Gender;
 import com.example.employees.employees.web.dto.EmployeeSearchResponseDto;
 import org.junit.jupiter.api.DisplayName;
@@ -37,16 +36,15 @@ class EmployeeSearchControllerTest {
     @Test
     void searchEmployeeById() throws Exception {
         //given
-        Employee employee = new Employee(
+        EmployeeSearchResponseDto employeeSearchResponseDto = new EmployeeSearchResponseDto(
                 10001L,
                 LocalDate.of(1999, 1, 1),
                 "firstName",
                 "lastName",
-                Gender.M,
+                Gender.M.toString(),
                 LocalDate.of(2022, 8, 21)
         );
 
-        EmployeeSearchResponseDto employeeSearchResponseDto = EmployeeSearchResponseDto.fromEntity(employee);
         given(employeeSearchService.searchEmployeeById(any())).willReturn(employeeSearchResponseDto);
 
         //when
